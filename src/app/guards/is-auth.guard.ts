@@ -18,7 +18,9 @@ export class IsAuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      this.router.navigate(['inicio']);
-      return !this.isAuth.userIsAuth();
+      if (!this.isAuth.userIsAuth) {
+        this.router.navigate(['inicio']);
+      }
+      return this.isAuth.userIsAuth();
     }
 }
