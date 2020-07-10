@@ -23,7 +23,7 @@ export class LandingComponent implements OnInit {
           // remove logic
           this.renderer.addClass(this.myNavbar.nativeElement, 'navbar-transparent');
       }
-  });
+    });
   }
 
 }

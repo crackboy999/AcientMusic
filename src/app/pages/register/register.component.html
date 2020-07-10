@@ -1,4 +1,4 @@
-<nav #navbarC class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+<nav #navbarC class="navbar navbar-expand-lg fixed-top navbar-transparent mb-5" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" routerLink="home">
@@ -14,12 +14,9 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank">Iniciar sesion</a>
+                    <a class="nav-link" routerLink="/login">Iniciar sesion</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/register">Registrarse</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -29,10 +26,10 @@
         <div class="filter"></div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6 mr-auto ml-auto">
+                <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                     <div class="card card-register" style="max-width: 700px;">
                         <h3 class="title">Nuevo registro</h3>
-                        <form class="register-form" [formGroup]="form" (ngSubmit)="login()">
+                        <form class="register-form" [formGroup]="form" (ngSubmit)="register()">
                             <label>Nombre</label>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
@@ -41,7 +38,10 @@
                                   </span>
                                 </div>
 
-                                <input type="text" formControlName="email" class="form-control" placeholder="Nombre" (focus)="focus=true" (blur)="focus=false">
+                                <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" (focus)="focus=true" (blur)="focus=false">
+                                <span *ngIf="nombreNoValido" class="text-danger">
+                                    Ingrese por lo menos 5 letras
+                                </span>
                             </div>
 
                             <label>Correo</label>
@@ -53,6 +53,9 @@
                                 </div>
 
                                 <input type="text" formControlName="email" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false">
+                                <span *ngIf="correoNoValido" class="text-danger">
+                                    Ingrese un correo valido
+                                </span>
                             </div>
 
                             <label>Usuario</label>
@@ -63,7 +66,10 @@
                                   </span>
                                 </div>
 
-                                <input type="text" formControlName="email" class="form-control" placeholder="Usuario" (focus)="focus=true" (blur)="focus=false">
+                                <input type="text" formControlName="usuario" class="form-control" placeholder="Usuario" (focus)="focus=true" (blur)="focus=false">
+                                <span *ngIf="usuarioNoValido" class="text-danger">
+                                    Ingrese por lo menos 5 caracteres
+                                </span>
                             </div>
 
                             <label>Contraseña</label>
@@ -73,7 +79,10 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                <input type="password" formControlName="pass" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false">
+                                <input type="password" formControlName="pass1" class="form-control" placeholder="Contraseña" (focus)="focus1=true" (blur)="focus1=false">
+                                <span *ngIf="pass1NoValido" class="text-danger">
+                                    Ingrese al menos 6 caracteres
+                                </span>
                             </div>
 
                             <label>Repite la contraseña</label>
@@ -83,14 +92,14 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                <input type="password" formControlName="pass" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false">
+                                <input type="password" formControlName="pass2" class="form-control" placeholder="Contraseña" (focus)="focus1=true" (blur)="focus1=false">
+                                <span *ngIf="pass2NoValido" class="text-danger">
+                                    Las contraseñas deben coincidir
+                                </span>
                             </div>
 
                             <button class="btn btn-danger btn-block btn-round">Login</button>
                         </form>
-                        <div class="forgot">
-                            <a class="btn btn-link btn-danger">¿Olvidaste la contraseña?</a>
-                        </div>
                     </div>
                 </div>
             </div>

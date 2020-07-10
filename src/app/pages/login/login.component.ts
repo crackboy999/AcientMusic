@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 // import { auth } from 'firebase/app';
 
 @Component({
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
-              public auth: AngularFireAuth) {
+              private auth: AngularFireAuth,
+              private router: Router) {
     this.crearFormulario();
    }
 
@@ -38,12 +41,16 @@ export class LoginComponent implements OnInit {
     }
     this.auth.signInWithEmailAndPassword(this.form.controls.email.value, this.form.controls.pass.value)
       .then((resp) => {
-        alert('Inicio de sesion');
+        Swal.fire({
+          icon: 'success',
+          title: 'Login correcto',
+          text: 'Bienvenido a AncientMusic',
+        });
+        this.router.navigate(['/inicio']);
       })
       .catch((error) => {
         // Handle Errors here.
         alert(error.message);
-        console.log(error);
       });
   }
 
