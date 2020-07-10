@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ancientmusic-6b7a0": {
+      "hosting": {
+        "ancientMusic": [
+          "ancientmusic-6b7a0"
+        ]
+      }
+    }
+  }
+}

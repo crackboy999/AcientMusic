@@ -1,0 +1,66 @@
+<nav #navbarC class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" routerLink="home">
+                <img src="../../../assets/img/guitarra.svg" width="30" height="30" class="d-inline-block align-top" alt="Ancient logo" loading="lazy"> Ancient Music
+            </a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank">Iniciar sesion</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/register">Registrarse</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/615.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                    <div class="card card-register">
+                        <h3 class="title">Bienvenido</h3>
+                        <form class="register-form" [formGroup]="form" (ngSubmit)="login()">
+                            <label>Email</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="nc-icon nc-email-85"></i>
+                                  </span>
+                                </div>
+
+                                <input type="text" formControlName="email" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false">
+                            </div>
+
+                            <label>Contraseña</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="nc-icon nc-key-25"></i>
+                                  </span>
+                                </div>
+                                <input type="password" formControlName="pass" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false">
+                            </div>
+                            <button class="btn btn-danger btn-block btn-round">Login</button>
+                        </form>
+                        <div class="forgot">
+                            <a class="btn btn-link btn-danger">¿Olvidaste la contraseña?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
