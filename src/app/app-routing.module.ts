@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { IsAuthGuard } from './guards/is-auth.guard';
 
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AdminComponent } from './pages/admin/admin.component';
+import { NewproductComponent } from './pages/newproduct/newproduct.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToInicio = () => redirectUnauthorizedTo(['inicio']);
@@ -16,6 +18,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [IsAuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [IsAuthGuard] },
   { path: 'inicio', component: HomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin', component: AdminComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'product', component: NewproductComponent, 
+  canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: '', component: LandingComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

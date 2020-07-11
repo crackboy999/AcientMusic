@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValidadoresService } from 'src/app/services/validadores.service';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth} from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 @Component({
   selector: 'app-register',
@@ -15,13 +17,15 @@ export class RegisterComponent implements OnInit {
   test: Date = new Date();
   focus;
   focus1;
+  newUsuario: Usuario;
 
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
               private validadores: ValidadoresService,
               private auth: AngularFireAuth,
-              private router: Router) {
+              private router: Router,
+              private firestore: AngularFirestore) {
     this.crearFormulario();
    }
 
@@ -80,6 +84,14 @@ export class RegisterComponent implements OnInit {
           title: 'Usuario creado',
           text: 'Seras redirigido a la pantalla de login',
         });
+        this.newUsuario = {
+          id: this.form.controls.usuario.value,
+          usuario: this.form.controls.usuario.value,
+          nombre: this.form.controls.nombre.value,
+          correo: this.form.controls.email.value,
+          rol: 'usuario'
+        }
+        this.firestore.collection('usuarios').doc(this.newUsuario.id).set(this.newUsuario);
         this.router.navigate(['/login']);
       })
       .catch(err => {

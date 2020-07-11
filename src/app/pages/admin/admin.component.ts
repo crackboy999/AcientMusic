@@ -3,11 +3,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class HomeComponent implements OnInit{
+export class AdminComponent implements OnInit {
   items: Observable<any[]>;
   products: Array<any>;
 

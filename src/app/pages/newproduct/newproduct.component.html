@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+
+<button class="btn" routerLink="/admin">Regresar</button>
+
+<div class="container mt-4">
+    <form [formGroup]="form" (ngSubmit)="saveProduct()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Nombre</label>
+                <input type="text" formControlName="nombre" class="form-control" id="inputEmail4">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Tipo</label>
+                <input type="text" formControlName="tipo" class="form-control" id="inputPassword4">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Descripción</label>
+            <input type="text" formControlName="descripcion" class="form-control" id="inputAddress" placeholder="Descripción">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Url imagen</label>
+            <input type="text" formControlName="url" class="form-control" id="inputAddress2" placeholder="Direccion de la imagen">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">Inventario</label>
+                <input type="number" formControlName="inventario" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputCity">Precio</label>
+                <input type="number" formControlName="precio" class="form-control" id="input">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>

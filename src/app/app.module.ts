@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
@@ -17,10 +18,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//Angular material
+// Angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { NewproductComponent } from './pages/newproduct/newproduct.component';
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { MatCardModule } from '@angular/material/card';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminComponent,
+    NewproductComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,9 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
